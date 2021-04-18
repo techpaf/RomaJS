@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Roma Demo</title>
+	<style>
+		html, body{
+			width: 100%;
+			height: 100%;
+			font-family: sans-serif;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<h1>Roma <span id="currentPage"></span></h1>
+	<h2>An attempt to make a super simple router with JS.</h2>
+	<a href="/">Homepage</a>
+	<a href="/about">About</a>
+	<a href="/works">Works</a>
+	<a href="/work/1">Work 1</a>
+	<a href="/work/2">Work 2</a>
+	<a href="/work/3">Work 3</a>
+	<a href="/contact">Contact</a>
+
+	<!-- Import the lib -->
+	<script src="Roma.js"></script>
+	<script>
+		var myRoma;
+
+		document.addEventListener("DOMContentLoaded", function(){
+			doRouting();
+			bindEvents();
+		});
+
+		function doRouting(){	
+			myRoma = new Roma();
+
+			myRoma.addRoute('/', function(){
+				console.log("Homepage");
+				document.getElementById("currentPage").textContent = "Homepage";
+			});
+
+			myRoma.addRoute('/works', function(){
+				console.log("Works");
+				document.getElementById("currentPage").textContent = "Works";
+			});
+
+			myRoma.addRoute('/about', function(){
+				console.log("About");
+				document.getElementById("currentPage").textContent = "About";
+			});
+
+			myRoma.addRoute('/work/:id', function(params){
+				console.log("Work " + params.id);
+				document.getElementById("currentPage").textContent = "Work " + params.id;
+			});
+
+			myRoma.addRoute('/contact', function(){
+				console.log("Contact");
+				document.getElementById("currentPage").textContent = "Contact";
+			});
+
+			myRoma.init();
+		}
+
+		function bindEvents(){
+			[].forEach.call(document.querySelectorAll('a'), function(el) {
+				el.addEventListener('click', function(e){
+					myRoma.goTo(this.getAttribute("href"));
+					e.preventDefault();
+				})
+			})
+		}
+		
+	</script>
+</body>
+</html>

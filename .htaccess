@@ -1,0 +1,9 @@
+RewriteEngine on
+# RewriteBase /
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Rewrite to index.html
+RewriteRule ^(.*)$ /index.html [NC,L,QSA]
+# Rewrite to index.php
+# RewriteRule ^(.*)$ /index.php?uri=$1 [NC,L,QSA]
+DirectoryIndex index.html
