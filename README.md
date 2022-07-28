@@ -1,5 +1,5 @@
 # RomaJS
-An attempt to make a super simple JS router.
+🔀 A super simple JS router.
 
 ## Setup :
 
