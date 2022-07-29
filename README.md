@@ -15,27 +15,27 @@ Somewhere in your code, instanciate Roma, add some routes and the corresponding 
 ```javascript
 myRoma = new Roma();
 
-myRoma.addRoute('/', function(){
+myRoma.addRoute('/', () => {
   console.log("Homepage");
   document.getElementById("currentPage").textContent = "Homepage";
 });
 
-myRoma.addRoute('/works', function(){
+myRoma.addRoute('/works', () => {
   console.log("Works");
   document.getElementById("currentPage").textContent = "Works";
 });
 
-myRoma.addRoute('/about', function(){
+myRoma.addRoute('/about', () => {
   console.log("About");
   document.getElementById("currentPage").textContent = "About";
 });
 
-myRoma.addRoute('/work/:id', function(params){
+myRoma.addRoute('/work/:id', (params) => {
   console.log("Work " + params.id);
   document.getElementById("currentPage").textContent = "Work " + params.id;
 });
 
-myRoma.addRoute('/contact', function(){
+myRoma.addRoute('/contact', () => {
   console.log("Contact");
   document.getElementById("currentPage").textContent = "Contact";
 });
